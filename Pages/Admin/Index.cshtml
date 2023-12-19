@@ -1,0 +1,62 @@
+﻿@page
+@model RiddlesApplication.Pages.Admin.IndexModel
+@{
+    Layout = "_Auth";
+}
+
+<div class="container mt-5">
+    <h2>Create New Riddle</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label class="control-label">Question</label>
+            <input name="question" class="form-control" />
+            <span class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Answer</label>
+            <input name="answer" class="form-control" />
+            <span class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Rank (1-3)</label>
+            <input name="rank" type="number" class="form-control" min="1" max="3" />
+            <span class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <h2>Riddle List</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Rank</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.riddlesList)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Question</td>
+                    <td>@item.Answer</td>
+                    <td>@item.rank</td>
+                    <td>
+                        <a href="/Edit" class="btn btn-warning">Edit</a>
+                        <a href="/Delete" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

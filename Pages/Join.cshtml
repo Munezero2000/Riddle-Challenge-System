@@ -1,0 +1,50 @@
+﻿@page
+@model RiddlesApplication.Pages.joinModel
+@{
+}
+<div class="container">
+    <div class="row">
+      
+        <div class="col-md-6">
+            @if (@Model.errorMessage.Length > 0)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <strong>@Model.errorMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            }
+            @if (@Model.successMessage.Length > 0)
+            {
+                <div class="alert alert-success" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            }
+            <form method="post" style="margin-top: 100px">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" name="fullname" class="form-control" id="fullName" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control"  placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="checkpassword" class="form-control"  placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="/Login">Already have an account Login</a>
+        </div>
+        <div class="col-md-6">
+            <img style="height: 500px; width: 500px;" src="https://www.brainzilla.com/static/riddles/riddles.png" alt="Your Image" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,58 @@
+﻿@page
+@model DashboardModel
+@{
+    Layout = "_Auth";
+}
+<h1> Riddles Challenge System</h1>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>@Model.successMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+<div class="text-center">
+    <img src="https://t4.ftcdn.net/jpg/03/03/54/41/360_F_303544189_VFjZ1AVjbVcRiZ0Za8dxTQES9BT9R3Sn.jpg" alt="Image" style="width: 100%; border-radius: 10px; height: 300px; margin: 10px 0;" />
+</div>
+
+
+<div class="row">
+    @foreach (var item in Model.riddles)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Riddle#@item.Id</h5>
+                    
+                    <p class="card-text">@item.Question</p>
+                    <a href="/dashboard/challenge/?id=@item.Id" class="btn btn-success">Attempt</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div style="background-color: rgb(240, 237, 237); padding: 10px; border-radius: 10px">
+    <h1>Won Challenges</h1>
+    <div class="row">
+        @foreach (var item in Model.AnsweredList)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Riddle#@item.Question</h5>
+                        <p class="card-text">@item.Answer</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

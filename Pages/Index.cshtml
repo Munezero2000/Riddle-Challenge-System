@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Guest Board";
+}
+
+<h1>Welcome to Riddles Challenge System</h1>
+<a href="/Login" class="btn btn-info">Login</a>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>@Model.successMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+
+<div class="text-center">
+    <img src="https://t4.ftcdn.net/jpg/03/03/54/41/360_F_303544189_VFjZ1AVjbVcRiZ0Za8dxTQES9BT9R3Sn.jpg" alt="Image" style="width: 100%; border-radius: 10px; height: 300px; margin: 10px 0;" />
+</div>
+
+
+<div class="row">
+    @foreach (var item in Model.riddles)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Riddle#@item.Id</h5>
+                    <img style="width: 50px; height: 50px;" src="~/css/riddleIcon.png" />
+                    <p class="card-text">@item.Question</p>
+                    <a href="/Join" class="btn btn-success">Register to attempt</a>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
+</div>
+
